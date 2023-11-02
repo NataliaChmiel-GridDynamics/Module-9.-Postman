@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "6dc6aa96-502a-40b5-b542-b72ca437429d",
+		"name": "Trello Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30213353"
+	},
+	"item": [
+		{
+			"name": "Creating a new board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var x = pm.response.json()",
+							"    pm.collectionVariables.set(\"boardID\", x.id);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/1/boards/?name={{$randomCompanyName}}&key={{apiKey}}&token={{token}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{$randomCompanyName}}"
+						},
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get board by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/1/boards/{{boardID}}?key={{apiKey}}&token={{token}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{boardID}}?key=fda45a61a7948788f066566d5a85919f&token=ATTAc375fcf5ba36bd9600be5fa993053b78e9c8cc1b619c381a4a1dd33ef3138323950F6D44",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "fda45a61a7948788f066566d5a85919f"
+						},
+						{
+							"key": "token",
+							"value": "ATTAc375fcf5ba36bd9600be5fa993053b78e9c8cc1b619c381a4a1dd33ef3138323950F6D44"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove board",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{boardID}}?key=fda45a61a7948788f066566d5a85919f&token=ATTAc375fcf5ba36bd9600be5fa993053b78e9c8cc1b619c381a4a1dd33ef3138323950F6D44",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "fda45a61a7948788f066566d5a85919f"
+						},
+						{
+							"key": "token",
+							"value": "ATTAc375fcf5ba36bd9600be5fa993053b78e9c8cc1b619c381a4a1dd33ef3138323950F6D44"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "boardID",
+			"value": ""
+		},
+		{
+			"key": "baseURL",
+			"value": "https://api.trello.com",
+			"type": "string"
+		},
+		{
+			"key": "apiKey",
+			"value": "fda45a61a7948788f066566d5a85919f",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "ATTAc375fcf5ba36bd9600be5fa993053b78e9c8cc1b619c381a4a1dd33ef3138323950F6D44",
+			"type": "string"
+		}
+	]
+}
